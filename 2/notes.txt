@@ -1,0 +1,62 @@
+C:\Users\Poorva\projects\Go\2\2.go
+
+2\problems.csv
+turns out, read() is capable of reading only bytes
+interesting concept - make and splice 
+readfile - reads into an entire byte array
+            no eof here
+
+
+csvfile, er := os.Open("problems.csv")
+
+	if er != nil {
+		fmt.Println("Error")
+		os.Exit(1)
+	}
+
+	csvread := csv.NewReader(csvfile)
+	record, er := csvread.Read()
+
+	if er != nil {
+		fmt.Println("Error")
+		os.Exit(1)
+	}
+
+	for {
+
+		record, er = csvread.Read()
+
+		if er != io.EOF {
+			fmt.Println(record[1])
+
+		} else {
+			break
+		}
+
+	}
+
+
+/* buff, err := os.Open(filename)
+
+	var b []byte
+	filebuffer, errorr := buff.Read(b)
+
+	if errorr != nil {
+		fmt.Println("Error!")
+		os.Exit(1)
+	}
+
+	if err != nil {
+		fmt.Println("Error!")
+		os.Exit(1)
+	}
+
+	fmt.Println(filebuffer) */
+
+	//	fmt.Println(strings.Trim(text, "!"))
+	/* fmt.Println(record[0][1])
+	fmt.Println(strings.TrimSpace(text) == strings.TrimSpace(record[0][1]))
+	fmt.Println(reflect.TypeOf(text))
+	fmt.Println(reflect.TypeOf(record[0][1])) */
+	//fmt.Println(record)
+	//fmt.Println(len(record))
